@@ -7,10 +7,10 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-public class Struts2Application {
+public class Struts2DemoApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Struts2Application.class, args);
+		SpringApplication.run(Struts2DemoApplication.class, args);
 	}
 
 	@Bean

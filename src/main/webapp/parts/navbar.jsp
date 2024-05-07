@@ -8,9 +8,7 @@
         </div>
         <ul class="nav navbar-nav">
             <li class="active"><a href="./../">Home</a></li>
-            <li><a href="uploadFileWithDefaultWaitPage.action">Upload File (default wait page)</a></li>
-            <li><a href="uploadFileWithCustomWaitPage.action">Upload File (custom wait page)</a></li>
-            <li><a href="uploadFileWithOverlay.action">Upload File (overlay)</a></li>
+            <li><a href="uploadFile.action">Upload File</a></li>
             <li><a href="listFiles.action">List Files</a></li>
         </ul>
     </div>

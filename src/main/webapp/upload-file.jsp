@@ -23,7 +23,7 @@
 <jsp:include page="parts/navbar.jsp"/>
 <h2>Upload File</h2>
 <p>Hello, <s:property value="#session.username"/></p>
-<s:form action="uploadFileWithOverlay" method="post" enctype="multipart/form-data">
+<s:form action="uploadFile" method="post" enctype="multipart/form-data">
     <s:file name="upload" label="File"/>
     <s:submit value="Upload"/>
 </s:form>

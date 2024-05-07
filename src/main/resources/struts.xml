@@ -10,37 +10,14 @@
         <action name="listFiles" class="com.example.struts2.struts.action.ListFilesAction">
             <result name="success">/list-files.jsp</result>
         </action>
-        <action name="uploadFileWithDefaultWaitPage" class="com.example.struts2.struts.action.UploadFileAction">
+        <action name="uploadFile" class="com.example.struts2.struts.action.UploadFileAction">
             <interceptor-ref name="completeStack"/>
             <interceptor-ref name="execAndWait">
                 <param name="delay">500</param>
                 <param name="delaySleepInterval">100</param>
             </interceptor-ref>
-            <result name="input">/upload-file-with-default-wait-page.jsp</result>
-            <result name="success" type="redirectAction">
-                <param name="actionName">listFiles</param>
-            </result>
-        </action>
-        <action name="uploadFileWithCustomWaitPage" class="com.example.struts2.struts.action.UploadFileAction">
-            <interceptor-ref name="completeStack"/>
-            <interceptor-ref name="execAndWait">
-                <param name="delay">500</param>
-                <param name="delaySleepInterval">100</param>
-            </interceptor-ref>
-            <result name="input">/upload-file-with-custom-wait-page.jsp</result>
-            <result name="wait">/wait.jsp</result>
-            <result name="success" type="redirectAction">
-                <param name="actionName">listFiles</param>
-            </result>
-        </action>
-        <action name="uploadFileWithOverlay" class="com.example.struts2.struts.action.UploadFileAction">
-            <interceptor-ref name="completeStack"/>
-            <interceptor-ref name="execAndWait">
-                <param name="delay">500</param>
-                <param name="delaySleepInterval">100</param>
-            </interceptor-ref>
-            <result name="input">/upload-file-with-overlay.jsp</result>
-            <result name="wait">/upload-file-with-overlay.jsp</result>
+            <result name="input">/upload-file.jsp</result>
+            <result name="wait">/upload-file.jsp</result>
             <result name="success" type="redirectAction">
                 <param name="actionName">listFiles</param>
             </result>
