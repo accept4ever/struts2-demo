@@ -1,3 +1,4 @@
+struts2application.working-folder: upload
 spring:
   servlet:
     multipart:

@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.struts2.action.SessionAware;
+import org.apache.struts2.action.UploadedFilesAware;
+import org.apache.struts2.dispatcher.multipart.UploadedFile;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -13,6 +15,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -20,11 +23,12 @@ import java.util.Random;
 @Getter
 @Setter
 @Slf4j
-public class UploadFileAction extends ActionSupport implements SessionAware {
+public class UploadFileAction extends ActionSupport implements SessionAware/*, UploadedFilesAware*/ {
 
-    private File upload;
+    private UploadedFile upload;
     private String uploadFileName;
     private String uploadContentType;
+    //private String originalName;
     private Integer currentProcessingStage;
     private Boolean showOverlay;
 
@@ -32,6 +36,16 @@ public class UploadFileAction extends ActionSupport implements SessionAware {
     private Path workingFolder;
 
     private Map<String, Object> session;
+
+    /*@Override
+    public void withUploadedFiles(List<UploadedFile> uploadedFiles) {
+        if (!uploadedFiles.isEmpty()) {
+            this.uploadedFile = uploadedFiles.get(0);
+            this.fileName = uploadedFile.getName();
+            this.contentType = uploadedFile.getContentType();
+            this.originalName = uploadedFile.getOriginalName();
+        }
+    }*/
 
     public String execute() throws Exception {
         if (upload == null)
@@ -47,13 +61,15 @@ public class UploadFileAction extends ActionSupport implements SessionAware {
                 throw new RuntimeException(e);
             }
         });
-        Files.copy(upload.toPath(), Paths.get(workingFolder.toString(), uploadFileName));
+        Files.copy(Paths.get(upload.getAbsolutePath()), Paths.get(workingFolder.toString(), uploadFileName));
         Random random = new Random();
         for (int i = 0; i < 5; i++) {
             currentProcessingStage = i + 1;
             int waitTime = 100 + random.nextInt(2900);
             log.info("Processing stage {} started and will take {} ms", currentProcessingStage,waitTime);
-            Thread.sleep(waitTime);
+            //RESULTS IN TEMP FILE BEING DELETED!
+            try {Thread.sleep(waitTime);} catch (Exception exc) {}
+            //
             log.info("Processing stage {} completed", currentProcessingStage);
         }
         return SUCCESS;

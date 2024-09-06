@@ -15,7 +15,7 @@
 	<packaging>war</packaging>
 	<properties>
 		<java.version>8</java.version>
-		<struts2.version>6.3.0.2</struts2.version>
+		<struts2.version>6.4.0</struts2.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -51,6 +51,11 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.13.0</version>
 		</dependency>
 		<!-- Test -->
 		<dependency>
