@@ -2,3 +2,5 @@ spring:
   servlet:
     multipart:
       enabled: false
+struts2application:
+  working-folder: ./upload

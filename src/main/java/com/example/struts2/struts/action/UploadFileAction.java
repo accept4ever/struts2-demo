@@ -26,7 +26,6 @@ public class UploadFileAction extends ActionSupport implements SessionAware {
     private String uploadFileName;
     private String uploadContentType;
     private Integer currentProcessingStage;
-    private Boolean showOverlay;
 
     @Value("${struts2application.working-folder}")
     private Path workingFolder;
@@ -36,7 +35,6 @@ public class UploadFileAction extends ActionSupport implements SessionAware {
     public String execute() throws Exception {
         if (upload == null)
             return INPUT;
-        showOverlay = true;
         if (!Files.exists(workingFolder)) {
             Files.createDirectories(workingFolder);
         }
